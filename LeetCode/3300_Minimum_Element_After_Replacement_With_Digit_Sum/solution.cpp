@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int minElement(vector<int>& nums) {
+        int min = 0;
+        int temp = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            while (nums[i] > 0) {
+                int a = nums[i] % 10;
+                temp += a;
+                nums[i] = (nums[i] -a);
+                nums[i] = (nums[i] / 10);
+            }
+            if(i==0) min=temp;
+            if (min > temp) min = temp;
+            temp = 0;
+        }
+        return min;
+    }
+};
